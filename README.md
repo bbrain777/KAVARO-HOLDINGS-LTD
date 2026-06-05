@@ -150,10 +150,7 @@ api/admin-apartments.js
 api/admin-upload.js
 api/setup-database.js
 api/admin-users.js
-api/account-signup.js
-api/account-change-password.js
-api/account-request-otp.js
-api/account-reset-password.js
+api/account.js
 ```
 
 If database variables are missing, the admin editor falls back to browser `localStorage`. In fallback mode, listings appear only in the current browser and may disappear if browser storage is cleared. Once Vercel Postgres is configured, admin-created listings are saved in the database and appear for all visitors.
@@ -177,8 +174,7 @@ The first admin account is bootstrapped from `ADMIN_EMAIL` and `ADMIN_PASSWORD` 
 All signed-in groups can change their own password. Password reset by OTP is available through:
 
 ```text
-api/account-request-otp.js
-api/account-reset-password.js
+api/account.js
 ```
 
 For real email delivery, add these Vercel environment variables:

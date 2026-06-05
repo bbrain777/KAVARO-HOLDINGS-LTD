@@ -1034,10 +1034,10 @@ function AdminGate({ children }) {
     setStatus('Creating account...');
 
     try {
-      const response = await fetch('/api/account-signup', {
+      const response = await fetch('/api/account', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(signup),
+        body: JSON.stringify({ ...signup, action: 'signup' }),
       });
       const data = await readApiResponse(response);
 
@@ -1065,10 +1065,10 @@ function AdminGate({ children }) {
     setStatus('Requesting OTP...');
 
     try {
-      const response = await fetch('/api/account-request-otp', {
+      const response = await fetch('/api/account', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: reset.email }),
+        body: JSON.stringify({ email: reset.email, action: 'request-otp' }),
       });
       const data = await readApiResponse(response);
       if (!response.ok) throw new Error(data.error || 'Unable to request OTP.');
@@ -1085,10 +1085,10 @@ function AdminGate({ children }) {
     setStatus('Resetting password...');
 
     try {
-      const response = await fetch('/api/account-reset-password', {
+      const response = await fetch('/api/account', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(reset),
+        body: JSON.stringify({ ...reset, action: 'reset-password' }),
       });
       const data = await readApiResponse(response);
       if (!response.ok) throw new Error(data.error || 'Unable to reset password.');
@@ -1196,11 +1196,11 @@ function AccountSecurity({ session }) {
     setStatus('Changing password...');
 
     try {
-      const data = await fetch('/api/account-change-password', {
+      const data = await fetch('/api/account', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'same-origin',
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, action: 'change-password' }),
       }).then(readApiJson);
 
       setForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
