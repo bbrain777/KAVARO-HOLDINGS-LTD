@@ -888,6 +888,47 @@ blockquote {
   color: var(--ink);
 }
 
+.trust-section {
+  background: #ffffff;
+}
+
+.theme-dark .trust-section {
+  background: #f7f8fa;
+  color: var(--ink);
+}
+
+.theme-light .trust-section {
+  background: #ffffff;
+  color: var(--ink);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.trust-grid article {
+  border: 1px solid rgba(7, 27, 52, 0.1);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(7, 27, 52, 0.07);
+}
+
+.trust-grid h3 {
+  margin: 0 0 10px;
+  color: var(--navy);
+  font-size: 1.18rem;
+}
+
+.trust-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
 .focus-list {
   display: flex;
   flex-wrap: wrap;
@@ -1922,6 +1963,7 @@ blockquote {
 
   .pillar-grid,
   .stats-grid,
+  .trust-grid,
   .service-grid,
   .apartment-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2051,6 +2093,7 @@ blockquote {
   .value-strip-inner,
   .pillar-grid,
   .stats-grid,
+  .trust-grid,
   .service-grid,
   .apartment-grid {
     grid-template-columns: 1fr;

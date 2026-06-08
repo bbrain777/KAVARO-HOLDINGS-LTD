@@ -427,7 +427,7 @@ function BusinessCards() {
     <div className="pillar-grid">
       {businessCards.map((card) => (
         <a className="pillar-card clickable-card" href={card.href} key={card.title}>
-          <img src={card.image} alt={`${card.title} business visual`} />
+          <img src={card.image} alt={`${card.title} business visual`} loading="lazy" />
           <div className="pillar-body">
             <span>{card.label}</span>
             <h3>{card.title}</h3>
@@ -457,7 +457,7 @@ function SocialImpactSection() {
           </a>
         </div>
         <div className="impact-panel">
-          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="Community development and youth support" />
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80" alt="Community development and youth support" loading="lazy" />
         </div>
       </div>
     </section>
@@ -527,6 +527,7 @@ function HomePage({ animateStats, statsRef }) {
       </section>
 
       <StatsSection animateStats={animateStats} statsRef={statsRef} />
+      <TrustSection />
       <InvestmentSection />
       <SocialImpactSection />
       <InsightsSection />
@@ -575,7 +576,7 @@ function AboutSummary() {
           </div>
         </div>
         <article className="founder-card">
-          <img src={founderPhoto} alt="Tayo Obademi, Founder and President of KAVARO Holdings Ltd" />
+          <img src={founderPhoto} alt="Tayo Obademi, Founder and President of KAVARO Holdings Ltd" loading="lazy" />
           <div>
             <span>Founder's Message</span>
             <h3>Tayo Obademi</h3>
@@ -1973,6 +1974,46 @@ function StatsSection({ animateStats, statsRef }) {
             <p>{item.label}</p>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function TrustSection() {
+  const trustItems = [
+    {
+      title: 'Clear Governance',
+      text: 'Structured policies, defined account roles and documented booking terms support responsible growth.',
+    },
+    {
+      title: 'Secure Workflows',
+      text: 'Google sign-in, protected admin access and Stripe-hosted checkout help keep sensitive activity in trusted systems.',
+    },
+    {
+      title: 'Responsible Partnerships',
+      text: 'Investment, trading and partner enquiries are reviewed before any commitment, approval or formal agreement.',
+    },
+  ];
+
+  return (
+    <section className="section trust-section">
+      <div className="container">
+        <div className="section-header align-left">
+          <span className="section-kicker">Trust & Governance</span>
+          <h2>Built for credibility before scale.</h2>
+          <p>
+            KAVARO is being developed as a disciplined corporate platform, with clear legal resources,
+            controlled access, secure payment flows and careful partner review.
+          </p>
+        </div>
+        <div className="trust-grid">
+          {trustItems.map((item) => (
+            <article key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
