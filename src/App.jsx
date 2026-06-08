@@ -915,7 +915,6 @@ function StaysPage() {
           <AdminGate>
             {(session) => (
               <>
-                <AccountSecurity session={session} />
                 {session.role === 'admin' && <UserManager />}
                 {['admin', 'staff'].includes(session.role) ? (
                   <ApartmentManager
@@ -926,7 +925,8 @@ function StaysPage() {
                     storageMode={storageMode}
                     storageMessage={storageMessage}
                   />
-                ) : <PartnerAccessPanel session={session} />}
+                ) : null}
+                {['partner', 'partner_pending'].includes(session.role) && <PartnerAccessPanel session={session} />}
               </>
             )}
           </AdminGate>
@@ -2122,7 +2122,6 @@ function Footer() {
         <div>
           <img src={logo} alt="KAVARO Holdings Ltd" />
           <p>KAVARO Holdings Ltd is the digital headquarters for a premium diversified corporate group spanning property, technology, trade and investment.</p>
-          <a className="text-link footer-founder-link" href="founder.html">Tayo Obademi, Founder & President</a>
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">
           {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
